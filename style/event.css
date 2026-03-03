@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+
+.rectangle {
+    height: 60px;
+    width: 250px;
+    background: red;
+    margin: 3px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hover {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+
+.move {
+    position: absolute;
+    bottom: 50px;
+    left: 50px
+}
+
+.dblclick {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+
+.click {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+
+.start {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
