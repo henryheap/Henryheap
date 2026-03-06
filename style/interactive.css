@@ -13,5 +13,9 @@ body {
 .bg {
     width: 100vw;
     height: 100vh;
-    background-image: url("../images/)
+    background-image: url('../images/burger.avif');
+    position: absolute;
+    background-size: cover;
+    background-size: cover;
+    z-index: -1;
 }
