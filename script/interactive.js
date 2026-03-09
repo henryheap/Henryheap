@@ -7,5 +7,3 @@ bg.addEventListener('click', () => {
     bg.style.backgroundImage = "url('../images/pizza.avif')"
     bg.style.backgroundImage = "url('../images/salad.avif')"
 })
-
-
