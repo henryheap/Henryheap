@@ -85,5 +85,3 @@ function increaseTime() {
 
     timeEl.innerHTML = `Time: ${m}:${s}`
 }
-
-
