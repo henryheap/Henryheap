@@ -8,6 +8,8 @@ messageEl = document.getElementById('message')
 score = 0
 seconds = 0
 
+
+
 start_btn.addEventListener('click', () => {
     screens[0].classList.add('up')
 })
@@ -30,12 +32,11 @@ function startGame() {
 function createInsect() {
     const insect = document.createElement('div')
     insect.classList.add('insect')
-    const {x,y} = getRandomL()
-    //insect.innerHTML = `<img src="${src}" alt="${alt}" style="transform: rotate(${Math.random()*360}deg)">`
-    //const {
-        //x,
-        //y
-    //} = getRandomL()
+    // const {x,y} = getRandomL()
+    width = window.innerWidth;
+    height = window.innerHeight;
+    x = Math.random() * (width - 200) + 100
+    y = Math.random() * (height - 200) + 100
     insect.style.top = `${y}px`
     insect.style.left = `${x}px`
     insect.innerHTML = `<img src="${src}" alt="${alt}" style="transform: rotate(${Math.random()*360}deg)">`
@@ -50,6 +51,7 @@ function getRandomL() {
     height = window.innerHeight;
     x = Math.random() * (width - 200) + 100
     y = Math.random() * (height - 200) + 100
+    console.log(width, height, x, y)
     return (x, y)
 }
 
@@ -69,7 +71,7 @@ function addInsects() {
 function increaseScore() {
     score = score + 1
     scoreEl.innerHTML = `Score: ${score}`
-    if (score == 30){
+    if (score == 30) {
         messageEl.classList.add('visible')
     }
 }
@@ -77,12 +79,12 @@ function increaseScore() {
 
 function increaseTime() {
     seconds = seconds + 1
-    m = Math.floor(seconds/60)
+    m = Math.floor(seconds / 60)
     s = seconds % 60
-    if (m<10){
+    if (m < 10) {
         m = `0${m}`
     }
-    if (s<10){
+    if (s < 10) {
         s = `0${s}`
     }
 
