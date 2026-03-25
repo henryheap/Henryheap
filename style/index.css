@@ -13,7 +13,7 @@ body {
 
 nav a:hover {
     font-weight: bold;
-    color: white;
+    color: black;
 }
 
 .text {
@@ -24,8 +24,8 @@ nav a:hover {
 .container {
     width: 100vw;
     height: 100vh;
-    background: green;
+    background: rgb(114,242,148);
     background-repeat: no-repeat;
     background-size: cover;
-    /* filter: blur(100px); */
+    filter: blur(100px);
 }
