@@ -18,14 +18,13 @@ nav a:hover {
 
 .text {
     font-size: 50px;
-    opacity: 0;
     color: black;
 }
 
 .container {
     width: 100vw;
     height: 100vh;
-    background: blue;
+    background: green;
     background-repeat: no-repeat;
     background-size: cover;
     /* filter: blur(100px); */
