@@ -36,38 +36,6 @@ let ballSpeed = 5
 let ballXDirection = 1
 let ballYDirection = 1
 
-
-
-// function moveBall() {
-//     ballXPosition = ballXPosition + ballSpeed * ballXDirection
-//     ballYPosition = ballYPosition + ballSpeed * ballYDirection
-//     ball.style.left = `${ballXPosition}px`
-//     ball.style.top = `${ballYPosition}px`
-//     let ballTop = ballYPosition
-//     let ballBottom = ballYPosition + 2 * ballRadius
-//     let ballLeft = ballXPosition
-//     let LPadelTop = LPadelYPosition
-//     let LPadelBottom = LPadelYPosition + LPadelHeight
-//     let LPadelRight = LPadelXPosition + LPadelWidth
-
-//     if (ballYPosition < 0 || ballYPosition > windowHeight - 2 * ballRadius) {
-//         ballYDirection = ballYDirection * -1
-//     }
-//     if (ballXPosition < 0 || ballXPosition > windowWidth - 2 * ballRadius) {
-//         ballXDirection = ballXDirection * -1
-//     }
-
-//     if (
-//         (ballBottom >= LPadelTop) &&
-//         (ballTop <= LPadelBottom) &&
-//         (ballLeft <= LPadelRight) &&
-//         (ballXDirection == -1)
-//     ) {
-//         ballXDirection = ballXDirection * -1
-//     }
-
-// }
-
 function moveBall() {
     // addition assignment operator
     ballXPosition += ballSpeed * ballXDirection
@@ -120,10 +88,10 @@ function moveBall() {
     }
 
     if (ballLeft < 0) {
-    rightScore += 1;
+    rightScore += 1
     resetBall(true)
     } else if (ballRight > windowWidth) {
-    leftScore += 1;
+    leftScore += 1
     resetBall(false)
     }
 }
@@ -132,25 +100,19 @@ function moveBall() {
 resetBall()
 
 function resetBall(lastScoredRight = false) {
-    // Center the ball
-    ballXPosition = windowWidth / 2 - ballRadius;
-    ballYPosition = windowHeight / 2 - ballRadius;
+    ballXPosition = windowWidth / 2 - ballRadius
+    ballYPosition = windowHeight / 2 - ballRadius
 
-    // Ball moves toward the player who just lost
     if (lastScoredRight) {
-        // Right player scored, so ball moves left
-        ballXDirection = -1;
+        ballXDirection = -1
     } else {
-        // Left player scored, so ball moves right
-        ballXDirection = 1;
+        ballXDirection = 1
     }
 
-    // Always start moving downward initially
-    ballYDirection = 1;
+    ballYDirection = 1
 
-    // Update the ball position on screen
-    ball.style.left = `${ballXPosition}px`;
-    ball.style.top = `${ballYPosition}px`;
+    ball.style.left = `${ballXPosition}px`
+    ball.style.top = `${ballYPosition}px`
 }
 createBall()
 
