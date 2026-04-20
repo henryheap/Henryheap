@@ -128,6 +128,30 @@ function moveBall() {
     }
 }
 
+
+resetBall()
+
+function resetBall(lastScoredRight = false) {
+    // Center the ball
+    ballXPosition = windowWidth / 2 - ballRadius;
+    ballYPosition = windowHeight / 2 - ballRadius;
+
+    // Ball moves toward the player who just lost
+    if (lastScoredRight) {
+        // Right player scored, so ball moves left
+        ballXDirection = -1;
+    } else {
+        // Left player scored, so ball moves right
+        ballXDirection = 1;
+    }
+
+    // Always start moving downward initially
+    ballYDirection = 1;
+
+    // Update the ball position on screen
+    ball.style.left = `${ballXPosition}px`;
+    ball.style.top = `${ballYPosition}px`;
+}
 createBall()
 
 function createBall() {
