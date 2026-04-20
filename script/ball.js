@@ -69,33 +69,40 @@ let ballYDirection = 1
 // }
 
 function moveBall() {
-    ballXPosition = ballSpeed * ballXDirection
-    ballYPosition = ballSpeed * ballYDirection
+    // Increment position (not overwrite!)
+    ballXPosition += ballSpeed * ballXDirection
+    ballYPosition += ballSpeed * ballYDirection
 
+    // Update ball position on screen
     ball.style.left = `${ballXPosition}px`
     ball.style.top = `${ballYPosition}px`
 
+    // Ball edges
     const ballTop = ballYPosition
     const ballBottom = ballYPosition + 2 * ballRadius
     const ballLeft = ballXPosition
     const ballRight = ballXPosition + 2 * ballRadius
 
+    // Wall collision
     if (ballTop < 0) {
         ballYDirection = 1
         ballYPosition = 0
     } else if (ballBottom > windowHeight) {
-        ballYDirection = - 1
+        ballYDirection = -1
         ballYPosition = windowHeight - 2 * ballRadius
     }
 
+    // Left paddle edges
     const LPadelTop = LPadelYPosition
     const LPadelBottom = LPadelYPosition + LPadelHeight
     const LPadelRight = LPadelXPosition + LPadelWidth
 
+    // Right paddle edges
     const RPadelTop = RPadelYPosition
     const RPadelBottom = RPadelYPosition + RPadelHeight
     const RPadelLeft = RPadelXPosition
 
+    // Left paddle collision
     if (
         ballLeft <= LPadelRight &&
         ballRight >= LPadelXPosition &&
@@ -104,9 +111,10 @@ function moveBall() {
         ballXDirection < 0
     ) {
         ballXDirection = 1
-        ballXPosition = LPadelRight
+        ballXPosition = LPadelRight // prevent sticking
     }
 
+    // Right paddle collision
     if (
         ballRight >= RPadelLeft &&
         ballLeft <= RPadelLeft + RPadelWidth &&
@@ -114,15 +122,16 @@ function moveBall() {
         ballTop <= RPadelBottom &&
         ballXDirection > 0
     ) {
-        ballXDirection = - 1
-        ballXPosition = RPadelLeft - 2 * ballRadius
+        ballXDirection = -1
+        ballXPosition = RPadelLeft - 2 * ballRadius // prevent sticking
     }
 
+    // Out-of-bounds (score)
     if (ballLeft < 0) {
-        rightScore
+        rightScore++
         resetBall()
     } else if (ballRight > windowWidth) {
-        leftScore
+        leftScore++
         resetBall()
     }
 }
