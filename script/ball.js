@@ -173,22 +173,4 @@ function animate() {
     requestAnimationFrame(animate)
 }
 
-
-function resetBall() {
-    ballXPosition = windowWidth / 2
-    ballYPosition = windowHeight / 2
-    ballXDirection = -1
-}
-
-
-if (ballXPosition < 0) {
-    rightScore;
-    scoreBoard.innerText = `${leftScore} - ${rightScore}`
-    resetBall();
-} else if (ballXPosition > windowWidth) {
-    leftScore;
-    scoreBoard.innerText = `${leftScore} - ${rightScore}`
-    resetBall();
-}
-
 animate()
