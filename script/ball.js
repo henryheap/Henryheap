@@ -12,7 +12,7 @@ let LPadelWidth = 20
 let LPadelHeight = 200
 let LPadelSpeed = 10
 let LPadelYPosition = windowHeight / 2 - LPadelHeight / 2
-let LPadelXPosition = windowWidth / 100
+let LPadelXPosition = windowWidth /100
 
 let leftScore = 0;
 let rightScore = 0;
