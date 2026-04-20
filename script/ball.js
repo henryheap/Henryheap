@@ -69,6 +69,7 @@ let ballYDirection = 1
 // }
 
 function moveBall() {
+    // addition assignment operator
     ballXPosition += ballSpeed * ballXDirection
     ballYPosition += ballSpeed * ballYDirection
 
