@@ -120,11 +120,11 @@ function moveBall() {
     }
 
     if (ballLeft < 0) {
-        rightScore = rightScore + 1
-        resetBall()
+    rightScore += 1;
+    resetBall(true)
     } else if (ballRight > windowWidth) {
-        leftScore = leftScore + 1
-        resetBall()
+    leftScore += 1;
+    resetBall(false)
     }
 }
 
