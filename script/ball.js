@@ -38,35 +38,93 @@ let ballYDirection = 1
 
 
 
+// function moveBall() {
+//     ballXPosition = ballXPosition + ballSpeed * ballXDirection
+//     ballYPosition = ballYPosition + ballSpeed * ballYDirection
+//     ball.style.left = `${ballXPosition}px`
+//     ball.style.top = `${ballYPosition}px`
+//     let ballTop = ballYPosition
+//     let ballBottom = ballYPosition + 2 * ballRadius
+//     let ballLeft = ballXPosition
+//     let LPadelTop = LPadelYPosition
+//     let LPadelBottom = LPadelYPosition + LPadelHeight
+//     let LPadelRight = LPadelXPosition + LPadelWidth
+
+//     if (ballYPosition < 0 || ballYPosition > windowHeight - 2 * ballRadius) {
+//         ballYDirection = ballYDirection * -1
+//     }
+//     if (ballXPosition < 0 || ballXPosition > windowWidth - 2 * ballRadius) {
+//         ballXDirection = ballXDirection * -1
+//     }
+
+//     if (
+//         (ballBottom >= LPadelTop) &&
+//         (ballTop <= LPadelBottom) &&
+//         (ballLeft <= LPadelRight) &&
+//         (ballXDirection == -1)
+//     ) {
+//         ballXDirection = ballXDirection * -1
+//     }
+
+// }
+
 function moveBall() {
-    ballXPosition = ballXPosition + ballSpeed * ballXDirection
-    ballYPosition = ballYPosition + ballSpeed * ballYDirection
-    ball.style.left = `${ballXPosition}px`
-    ball.style.top = `${ballYPosition}px`
-    let ballTop = ballYPosition
-    let ballBottom = ballYPosition + 2 * ballRadius
-    let ballLeft = ballXPosition
-    let LPadelTop = LPadelYPosition
-    let LPadelBottom = LPadelYPosition + LPadelHeight
-    let LPadelRight = LPadelXPosition + LPadelWidth
+    // Update ball position
+    ballXPosition += ballSpeed * ballXDirection;
+    ballYPosition += ballSpeed * ballYDirection;
 
-    if (ballYPosition < 0 || ballYPosition > windowHeight - 2 * ballRadius) {
-        ballYDirection = ballYDirection * -1
-    }
-    if (ballXPosition < 0 || ballXPosition > windowWidth - 2 * ballRadius) {
-        ballXDirection = ballXDirection * -1
+    // Update ball on screen
+    ball.style.left = `${ballXPosition}px`;
+    ball.style.top = `${ballYPosition}px`;
+
+    // Define ball edges
+    const ballTop = ballYPosition;
+    const ballBottom = ballYPosition + 2 * ballRadius;
+    const ballLeft = ballXPosition;
+    const ballRight = ballXPosition + 2 * ballRadius;
+
+    // Wall collision (top/bottom)
+    if (ballTop < 0 || ballBottom > windowHeight) {
+        ballYDirection *= -1;
     }
 
+    // Left Paddle collision
     if (
-        (ballBottom >= LPadelTop) &&
-        (ballTop <= LPadelBottom) &&
-        (ballLeft <= LPadelRight) &&
-        (ballXDirection == -1)
+        ballLeft <= LPaddleXPosition + LPaddleWidth &&
+        ballRight >= LPaddleXPosition &&
+        ballBottom >= LPaddleYPosition &&
+        ballTop <= LPaddleYPosition + LPaddleHeight
     ) {
-        ballXDirection = ballXDirection * -1
+        ballXDirection = 1; // bounce right
+
+        // Optional: adjust angle based on where it hit the paddle
+        const hitPos = (ballTop + ballRadius - LPaddleYPosition) / LPaddleHeight;
+        ballYDirection = hitPos < 0.5 ? -1 : 1;
     }
 
-}
+    // Right Paddle collision
+    if (
+        ballRight >= RPaddleXPosition &&
+        ballLeft <= RPaddleXPosition + RPaddleWidth &&
+        ballBottom >= RPaddleYPosition &&
+        ballTop <= RPaddleYPosition + RPaddleHeight
+    ) {
+        ballXDirection = -1; // bounce left
+
+        // Optional: adjust angle based on hit position
+        const hitPos = (ballTop + ballRadius - RPaddleYPosition) / RPaddleHeight;
+        ballYDirection = hitPos < 0.5 ? -1 : 1;
+    }
+
+    // Out-of-bounds (score)
+    if (ballLeft < 0) {
+        rightPlayerScore++;
+        resetBall();
+    } else if (ballRight > windowWidth) {
+        leftPlayerScore++;
+        resetBall();
+    }
+}ws
 
 createBall()
 
