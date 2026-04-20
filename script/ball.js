@@ -14,6 +14,10 @@ let LPadelSpeed = 10
 let LPadelYPosition = windowHeight / 2 - LPadelHeight / 2
 let LPadelXPosition = windowWidth / 100
 
+let leftScore = 0;
+let rightScore = 0;
+const scoreBoard = document.createElement('score')
+
 
 const RPadel = document.createElement('div')
 document.body.appendChild(RPadel)
@@ -167,6 +171,24 @@ function animate() {
     moveLPadel()
     moveRPadel()
     requestAnimationFrame(animate)
+}
+
+
+function resetBall() {
+    ballXPosition = windowWidth / 2
+    ballYPosition = windowHeight / 2
+    ballXDirection = -1
+}
+
+
+if (ballXPosition < 0) {
+    rightScore;
+    scoreBoard.innerText = `${leftScore} - ${rightScore}`
+    resetBall();
+} else if (ballXPosition > windowWidth) {
+    leftScore;
+    scoreBoard.innerText = `${leftScore} - ${rightScore}`
+    resetBall();
 }
 
 animate()
