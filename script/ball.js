@@ -114,6 +114,9 @@ function resetBall(lastScoredRight = false) {
     ball.style.left = `${ballXPosition}px`
     ball.style.top = `${ballYPosition}px`
 }
+
+
+
 createBall()
 
 function createBall() {
