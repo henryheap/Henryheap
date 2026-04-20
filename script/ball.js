@@ -69,20 +69,20 @@ let ballYDirection = 1
 // }
 
 function moveBall() {
-    ballXPosition = ballSpeed * ballXDirection;
-    ballYPosition = ballSpeed * ballYDirection;
+    ballXPosition = ballSpeed * ballXDirection
+    ballYPosition = ballSpeed * ballYDirection
 
-    ball.style.left = `${ballXPosition}px`;
-    ball.style.top = `${ballYPosition}px`;
+    ball.style.left = `${ballXPosition}px`
+    ball.style.top = `${ballYPosition}px`
 
-    const ballTop = ballYPosition;
-    const ballBottom = ballYPosition + 2 * ballRadius;
-    const ballLeft = ballXPosition;
-    const ballRight = ballXPosition + 2 * ballRadius;
+    const ballTop = ballYPosition
+    const ballBottom = ballYPosition + 2 * ballRadius
+    const ballLeft = ballXPosition
+    const ballRight = ballXPosition + 2 * ballRadius
 
     if (ballTop < 0) {
         ballYDirection = 1
-        ballYPosition = 0;
+        ballYPosition = 0
     } else if (ballBottom > windowHeight) {
         ballYDirection = - 1
         ballYPosition = windowHeight - 2 * ballRadius
@@ -103,7 +103,7 @@ function moveBall() {
         ballTop <= LPadelBottom &&
         ballXDirection < 0
     ) {
-        ballXDirection = 1;
+        ballXDirection = 1
         ballXPosition = LPadelRight
     }
 
@@ -116,6 +116,14 @@ function moveBall() {
     ) {
         ballXDirection = - 1
         ballXPosition = RPadelLeft - 2 * ballRadius
+    }
+
+    if (ballLeft < 0) {
+        rightScore
+        resetBall()
+    } else if (ballRight > windowWidth) {
+        leftScore
+        resetBall()
     }
 }
 
